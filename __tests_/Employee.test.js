@@ -4,7 +4,7 @@ const Employee = require('../lib/Employee.js');
 test('creates container for employee info', () => {
     const employee = new Employee('Julie', 123, 'julie@email.com');
 
-    //expect team manager name
+    //expect team employee name
     expect(employee.name).toEqual(expect.any(String));
     //expect employee ID
     expect(employee.id).toEqual(expect.any(Number));
