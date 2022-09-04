@@ -10,8 +10,7 @@ test('creates container for employee info', () => {
     expect(employee.id).toEqual(expect.any(Number));
     //expect email address
     expect(employee.email).toEqual(expect.any(String));
-    //expect office number
-    //expect(employee.offnumber).toEqual(expect.any(Number));
+
 
     console.log(`Employee Name: ${employee.name}`);
     console.log(`Employee ID: ${employee.id}`);

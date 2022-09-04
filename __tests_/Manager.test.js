@@ -10,11 +10,12 @@ const manager = new  Manager('Ralph', 2, 'ralph@email.com', '555-5555');
  expect(manager.id).toEqual(expect.any(Number));
  //expect email address
  expect(manager.email).toEqual(expect.any(String));
- //expect office number - use string as it includes phone number dash/format
- expect(manager.offnumber).toEqual(expect.any(String));
+ //expect office number as string
+ expect(manager.offNumber).toEqual(expect.any(String));
 
  console.log(`Manager Name: ${manager.name}`);
  console.log(`Manager ID: ${manager.id}`);
  console.log(`Manager Email: ${manager.email}`);
- console.log(`Manager Office Number: ${manager.offnumber}`);
+ console.log(`Manager Office Number: ${manager.offNumber}`);
 });
+
