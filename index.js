@@ -71,7 +71,7 @@ const addManageremp = managerData => {
             managerData.id, 
             managerData.email, 
             managerData.offNumber);
-        empArray.push(managerData);
+        empArray.push(manager);
     })
     
 };
