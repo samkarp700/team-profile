@@ -2,7 +2,7 @@ const Manager = require('../lib/Manager.js');
 
 test('creates a container for Manager info', () => {
 //must inherit from Employee info + office number
-const manager = new  Manager(Ralph, 2, 'ralph@email.com', '555-5555');
+const manager = new  Manager('Ralph', 2, 'ralph@email.com', '555-5555');
 
  //expect team manager name
  expect(manager.name).toEqual(expect.any(String));
@@ -10,8 +10,8 @@ const manager = new  Manager(Ralph, 2, 'ralph@email.com', '555-5555');
  expect(manager.id).toEqual(expect.any(Number));
  //expect email address
  expect(manager.email).toEqual(expect.any(String));
- //expect office number
- expect(manager.offnumber).toEqual(expect.any(Number));
+ //expect office number - use string as it includes phone number dash/format
+ expect(manager.offnumber).toEqual(expect.any(String));
 
  console.log(`Manager Name: ${manager.name}`);
  console.log(`Manager ID: ${manager.id}`);
