@@ -78,24 +78,28 @@ const addManageremp = managerData => {
 
 //add an employee
 const addTeamEmp = employeeData => {
+    // if (!employeeData.empArray) {
+    //     employeeData.empArray=[];
+    // }
     return inquirer.prompt([
 
 //general prompt questions
 {
-    type: 'checkbox',
+    type: 'list',
     name: 'role', 
     message: 'Please add a team member by selecting 1 of the roles below:',
     choices: ['Engineer', 'Intern', 'Team Complete'] 
 },
 {
-    type: 'list',
+    type: 'input',
     name: 'name', 
-    message: "What is the first employee's name?", 
+    message: "What is the employee's name?", 
+    when: (answer) => answer.role !== 'Team Complete',
     validate: nameInput => {
         if (nameInput) {
             return true;
         } else {
-            console.log("Please enter the team manager's name.");
+            console.log("Please enter the employee's name.");
             return false;
         }
     }
@@ -103,12 +107,13 @@ const addTeamEmp = employeeData => {
 {
     type: 'input', 
     name: 'id', 
-    message: "Please enter the manager's ID number.",
+    message: "Please enter the employee's ID number.",
+    when: (answer) => answer.role !== 'Team Complete',
     validate: idInput => {
         if (idInput) {
             return true;
         } else {
-            console.log("Please enter the manager's ID number");
+            console.log("Please enter the employee's ID number");
             return false;
         }
     }
@@ -116,12 +121,13 @@ const addTeamEmp = employeeData => {
 {
     type: 'input', 
     name: 'email', 
-    message: "Please enter the manager's email address.", 
+    message: "Please enter the employee's email address.", 
+    when: (answer) => answer.role !== 'Team Complete',
     validate: emailInput => {
         if (emailInput) {
             return true;
         }else {
-            console.log("Please enter the manager's email address.");
+            console.log("Please enter the employee's email address.");
             return false;
         }
     }
@@ -131,6 +137,7 @@ const addTeamEmp = employeeData => {
     type: 'input', 
     name: 'github', 
     message: "Please enter the engineer's github name.", 
+    when: (answer) => answer.role === 'Engineer',
     validate: gitInput => {
         if (gitInput) {
             return true;
@@ -145,12 +152,13 @@ const addTeamEmp = employeeData => {
 {
     type: 'input', 
     name: 'school', 
-    message: "Where is the inter currently enrolled?", 
+    message: "Where is the intern currently enrolled?", 
+    when: (answer) => answer.role === 'Intern',
     validate: schoolInput => {
         if (schoolInput) {
             return true;
         } else {
-            console.log("Please enter the student's school.");
+            console.log("Please enter the intern's school.");
             return false;
         }
     }
@@ -160,6 +168,7 @@ const addTeamEmp = employeeData => {
     type: 'confirm', 
     name: 'addanotherEmployee',
     message: 'Would you like to add another member to your team?', 
+    when: (answer) => answer.role !== 'Team Complete',
     default: false
 }
     ])
@@ -205,10 +214,19 @@ const writeFile = fileContent => {
     });
 };
 
-//app begin 
+//init app
 addManageremp()
 .then(employeeData => {
     return addTeamEmp(employeeData)
+})
+.then(pageHTML => {
+    return writeFile(pageHTML);
+})
+.then(writeFile => {
+    return fileContent(writeFile);
+})
+.catch(err => {
+    console.log(err);
 });
 
 
