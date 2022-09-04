@@ -17,4 +17,30 @@ test('creates container for employee info', () => {
     console.log(`Employee Email: ${employee.email}`);
 });
 
+test('get employee name', () => {
+    const employee = new Employee('Julie', 123, 'julie@email.com');
+
+    expect(employee.getName()).toEqual(expect.any(String));
+});
+
+test('get employee id', () => {
+    const employee = new Employee('Julie', 123, 'julie@email.com');
+
+    expect(employee.getId()).toEqual(expect.any(Number));
+});
+
+test('get employee email', () => {
+    const employee = new Employee('Julie', 123, 'julie@email.com');
+
+    expect(employee.getEmail()).toEqual(expect.any(String));
+});
+
+test('create role of employee', () => {
+    const employee = new Employee('Julie', 123, 'julie@email.com');
+
+    expect(employee.getRole()).toBe('Employee');
+
+});
+
+
  
