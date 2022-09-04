@@ -1,6 +1,33 @@
 const generateEmp = data => {
     empArray = [];
+
+    //calls to employee types
+    for (let i = 0; i <data.length; i++) {
+        let employee = data[i];
+        let role = employee.getRole();
+
+        if(role === 'Manager') {
+            const managerEmp = managerCard(employee);
+            empArray.push(managerEmp);
+        }
+        if (role === 'Engineer') {
+            const engineerEmp = engineerCard(employee);
+            empArray.push(engineerEmp);
+        }
+        if (role === 'Intern') {
+            const internEmp = internCard(employee);
+            empArray.push(internEmp);
+        }
+    }
+
+    //add to empArray
+    const employeeProfile = empArray.join('');
+
+    //display all 
+    const teamProfiles = generateSite(employeeProfile);
+    return teamProfiles;
 };
+
     // manager card
     const managerCard = manager => {
         if(!manager) {
