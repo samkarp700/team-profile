@@ -22,5 +22,8 @@
   "homepage": "https://github.com/samkarp700/team-profile#readme",
   "devDependencies": {
     "jest": "^28.1.3"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
   }
 }
