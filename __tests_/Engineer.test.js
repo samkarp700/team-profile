@@ -18,3 +18,8 @@ test('creates a container for Engineer Info', () => {
  console.log(`Engineer Email: ${engineer.email}`);
  console.log(`Engineer GitHub Name: ${engineer.gitName}`);
 });
+
+test('create Engineer', () => {
+    const engineer = new Engineer('Joe', 3, 'joe@engineeremail.com', 'joesgithubname');
+    expect(engineer.getRole()).toBe('Engineer');
+})

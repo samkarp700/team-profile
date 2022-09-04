@@ -19,3 +19,8 @@ const manager = new  Manager('Ralph', 2, 'ralph@email.com', '555-5555');
  console.log(`Manager Office Number: ${manager.offNumber}`);
 });
 
+test('create manager role', () => {
+    const manager = new Manager('Ralph', 2, 'ralph@email.com', '555-5555');
+    expect(manager.getRole()).toBe('Manager');
+});
+

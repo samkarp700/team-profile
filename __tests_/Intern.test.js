@@ -18,3 +18,8 @@ const intern = new Intern('Callie', 4, 'callie@intern.com', 'University of Centr
  console.log(`Intern Email: ${intern.email}`);
  console.log(`Intern School: ${intern.schoolName}`);
 });
+
+test('create intern role', () => {
+    const intern = new Intern('Callie', 4, 'callie@intern.com', 'University of Central Florida');
+    expect(intern.getRole()).toBe('Intern');
+})
