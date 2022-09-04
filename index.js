@@ -82,14 +82,13 @@ const addTeamEmp = employeeData => {
 
 //general prompt questions
 {
-    type: 'list', 
-
     type: 'checkbox',
     name: 'role', 
     message: 'Please add a team member by selecting 1 of the roles below:',
     choices: ['Engineer', 'Intern', 'Team Complete'] 
 },
 {
+    type: 'list',
     name: 'name', 
     message: "What is the first employee's name?", 
     validate: nameInput => {
