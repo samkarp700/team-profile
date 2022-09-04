@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateEmp = require('./src/generatesite');
 
 // employee containers
 const Manager = require('./lib/Manager');
@@ -198,9 +199,9 @@ const addTeamEmp = employeeData => {
 };
 
 //create html file
-const writeFile = fileContent => {
+const generatefile = (fileContent, empArray) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile('.dist/index.html', fileContent, err => {
+        fs.writeFile('./dist/index.html', fileContent, err => {
             //if error - reject promise
             if (err) {
                 reject(err);
@@ -219,11 +220,15 @@ addManageremp()
 .then(employeeData => {
     return addTeamEmp(employeeData)
 })
-.then(pageHTML => {
-    return writeFile(pageHTML);
+.then(data => {
+    console.log(data);
+    return generateEmp(data);
 })
-.then(writeFile => {
-    return fileContent(writeFile);
+.then(generateNew => {
+    return generatefile(generateNew);
+})
+.then(writeFileResponse => {
+    console.log(writeFileResponse.message);
 })
 .catch(err => {
     console.log(err);
