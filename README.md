@@ -11,3 +11,6 @@ HTML, CSS, Bootstrap, Inquirer, Node
 
 ## Video of Application
 Check it out! 
+
+https://user-images.githubusercontent.com/105761973/188350989-95931732-de97-49b8-b56b-6962cea1e00a.mp4
+
