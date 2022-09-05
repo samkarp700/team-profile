@@ -89,12 +89,13 @@ const addTeamEmp = employeeData => {
     type: 'list',
     name: 'role', 
     message: 'Please add a team member by selecting 1 of the roles below:',
-    choices: ['Engineer', 'Intern'] 
+    choices: ['Engineer', 'Intern', 'There are no other members'] 
 },
 {
     type: 'input',
     name: 'name', 
     message: "What is the employee's name?", 
+    // when: (answer) => answer.role !== 'There are no other members',
     validate: nameInput => {
         if (nameInput) {
             return true;
@@ -108,6 +109,7 @@ const addTeamEmp = employeeData => {
     type: 'input', 
     name: 'id', 
     message: "Please enter the employee's ID number.",
+    // when: (answer) => answer.role !== 'There are no other members',
     validate: idInput => {
         if (idInput) {
             return true;
@@ -121,6 +123,7 @@ const addTeamEmp = employeeData => {
     type: 'input', 
     name: 'email', 
     message: "Please enter the employee's email address.", 
+    // when: (answer) => answer.role !== 'There are no other members',
     validate: emailInput => {
         if (emailInput) {
             return true;
@@ -166,6 +169,7 @@ const addTeamEmp = employeeData => {
     type: 'confirm', 
     name: 'addanotherEmployee',
     message: 'Would you like to add another member to your team?', 
+    when: (answer) => answer.role !== 'There are no other members',
     default: true
 }
     ])
