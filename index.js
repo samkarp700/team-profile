@@ -170,7 +170,7 @@ const addTeamEmp = employeeData => {
     name: 'addanotherEmployee',
     message: 'Would you like to add another member to your team?', 
     when: (answer) => answer.role !== 'Team Complete',
-    default: false
+    default: true
 }
     ])
         .then(employeeData => {

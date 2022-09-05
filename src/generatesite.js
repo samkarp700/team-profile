@@ -41,7 +41,7 @@ const generateEmp = data => {
                              <div class="card-body">
                                 <p class="card-text">ID: ${manager.id}
                                 <br>
-                                E-Mail: <a href="mailto:${manager.email}</a>
+                                E-Mail: <a href="mailto:${manager.email}">${manager.email}</a>
                                 <br>
                                 Office Number: ${manager.offNumber}</p>
                                      
@@ -65,7 +65,7 @@ const generateEmp = data => {
                              <div class="card-body">
                                 <p class="card-text">ID: ${engineer.id}
                                 <br>
-                                E-Mail: <a href="mailto:${engineer.email}</a>
+                                E-Mail: <a href="mailto:${engineer.email}">${engineer.email}</a>
                                 <br>
                                 GitHub: <a href="https://github.com/${engineer.gitName}" target="_blank">${engineer.gitName}</a></p>
                                      
@@ -90,7 +90,7 @@ const generateEmp = data => {
                              <div class="card-body">
                                 <p class="card-text">ID: ${intern.id}
                                 <br>
-                                E-Mail: <a href="mailto:${intern.email}</a>
+                                E-Mail: <a href="mailto:${intern.email}">${intern.email}</a>
                                 <br>
                                 School: ${intern.schoolName}
                                      
@@ -114,7 +114,7 @@ const generateSite = data => {
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Employee Profiles</h1>
         <p class="lead">Check out the team!</p>
