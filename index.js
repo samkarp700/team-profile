@@ -1,5 +1,5 @@
+const writeFile = require('./utils/generate-site');
 const inquirer = require('inquirer');
-const fs = require('fs');
 const generateEmp = require('./src/generatesite');
 
 // employee containers
@@ -64,6 +64,13 @@ const addManageremp = managerData => {
                     return false; 
                 }
             }
+        }, 
+        {
+            type: 'confirm', 
+            name: 'addanotherEmployee',
+            message: 'Would you like to add another member to your team?', 
+            when: (answer) => answer.role === 'There are no other members',
+            default: true
         }
     ])
     //display manager data into employee array /containers
@@ -169,7 +176,7 @@ const addTeamEmp = employeeData => {
     type: 'confirm', 
     name: 'addanotherEmployee',
     message: 'Would you like to add another member to your team?', 
-    when: (answer) => answer.role === 'There are no other members',
+    when: (answer) => answer.role !== 'There are no other members',
     default: true
 }
     ])
@@ -198,26 +205,10 @@ const addTeamEmp = employeeData => {
         });
 };
 
-//create html file
-const generatefile = (fileContent) => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/index.html', fileContent, err => {
-            //if error - reject promise
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve({
-                ok: true,
-                message: 'Team profile created!'
-            });
-        });
-    });
-};
 
 //init app
 addManageremp()
-.then(addTeamEmp)
+// .then(addTeamEmp)
 .then(employeeData => {
     return addTeamEmp(employeeData)
 })
@@ -225,8 +216,8 @@ addManageremp()
     console.log(data);
     return generateEmp(data);
 })
-.then(generateNew => {
-    return generatefile(generateNew);
+.then(pageHTML => {
+    return writeFile(pageHTML);
 })
 .then(writeFileResponse => {
     console.log(writeFileResponse.message);
