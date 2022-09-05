@@ -169,7 +169,6 @@ const addTeamEmp = employeeData => {
     type: 'confirm', 
     name: 'addanotherEmployee',
     message: 'Would you like to add another member to your team?', 
-    when: (answer) => answer.role !== 'Team Complete',
     default: true
 }
     ])
@@ -199,7 +198,7 @@ const addTeamEmp = employeeData => {
 };
 
 //create html file
-const generatefile = (fileContent, empArray) => {
+const generatefile = (fileContent) => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', fileContent, err => {
             //if error - reject promise
