@@ -169,6 +169,7 @@ const addTeamEmp = employeeData => {
     type: 'confirm', 
     name: 'addanotherEmployee',
     message: 'Would you like to add another member to your team?', 
+    when: (answer) => answer.role !== 'Team Complete',
     default: true
 }
     ])
@@ -189,7 +190,7 @@ const addTeamEmp = employeeData => {
                     empArray.push(intern);
             }
             // add another employee prompt
-            if (employeeData.addTeamEmp) {
+            if (employeeData.addanotherEmployee) {
                 return addTeamEmp(empArray);
             } else {
                 return empArray;
@@ -216,6 +217,7 @@ const generatefile = (fileContent) => {
 
 //init app
 addManageremp()
+.then(addTeamEmp)
 .then(employeeData => {
     return addTeamEmp(employeeData)
 })
